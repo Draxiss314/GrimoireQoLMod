@@ -35,8 +35,8 @@ GrimoireMod.launch = function(){
 	mode2 = `// M.getSpellCostBreakdown injection point 0
 			for(var i in Game.customMinigame['` + objKey + `'].getSpellCostBreakdown) str = Game.customMinigame['` + objKey + `'].getSpellCostBreakdown[i](spell, str);`
 
-	CCSE.ReplaceCodeIntoFunction(M.getSpellCost, 'if (spell.costPercent) out+=M.magicM*spell.costPercent;', 'if (spell.costPercent) out+=M.magic*spell.costPercent;', mode1, preEvalScript, -1);
-	CCSE.ReplaceCodeIntoFunction(M.getSpellCostBreakdown, "+'% of max magic';", "+'% of current magic';", mode2, preEvalScript, -1);
+	CCSE.ReplaceCodeIntoFunction('M.getSpellCost', 'if (spell.costPercent) out+=M.magicM*spell.costPercent;', 'if (spell.costPercent) out+=M.magic*spell.costPercent;', mode1, preEvalScript, -1);
+	CCSE.ReplaceCodeIntoFunction('M.getSpellCostBreakdown', "+'% of max magic';", "+'% of current magic';", mode2, preEvalScript, -1);
 
 	GrimoireMod.isLoaded = 1;
 	/**
