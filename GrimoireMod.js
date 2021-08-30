@@ -29,22 +29,12 @@ GrimoireMod.launch = function(){
 	var M = Game.Objects[objKey].minigame;
 	var preEvalScript = "var M = Game.Objects['" + objKey + "'].minigame;"; //I think there was supposed to be an easier way utilizing the functions provided by CCSE, but I didn't understand so I just copy-pased the functions I was pretty sure would work. 
 
-	mode1 = `// M.getSpellCost injection point 0
-			for(var i in Game.customMinigame['` + objKey + `'].getSpellCost) out *= Game.customMinigame['` + objKey + `'].getSpellCost[i](spell);`
+	
 
-	mode2 = `// M.getSpellCostBreakdown injection point 0
-			for(var i in Game.customMinigame['` + objKey + `'].getSpellCostBreakdown) str = Game.customMinigame['` + objKey + `'].getSpellCostBreakdown[i](spell, str);`
-
-	CCSE.ReplaceCodeIntoFunction('M.getSpellCost', 'if (spell.costPercent) out+=M.magicM*spell.costPercent;', 'if (spell.costPercent) out+=M.magic*spell.costPercent;', mode1, preEvalScript, -1);
-	CCSE.ReplaceCodeIntoFunction('M.getSpellCostBreakdown', "+'% of max magic';", "+'% of current magic';", mode2, preEvalScript, -1);
+	CCSE.ReplaceCodeIntoFunction('M.getSpellCost', 'if (spell.costPercent) out+=M.magicM*spell.costPercent;', 'if (spell.costPercent) out+=M.magic*spell.costPercent;', -1, preEvalScript);
+	CCSE.ReplaceCodeIntoFunction('M.getSpellCostBreakdown', "+'% of max magic';", "+'% of current magic';", -1, preEvalScript);
 
 	GrimoireMod.isLoaded = 1;
-	/**
-	
-	All the code you want to delay goes here
-	Put "MyMod.isLoaded = 1;" somewhere within
-	
-	**/
 }
 
 if(!GrimoireMod.isLoaded){
