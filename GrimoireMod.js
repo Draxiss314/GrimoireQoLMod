@@ -30,8 +30,8 @@ GrimoireMod.launch = function(){
 	var M = Game.Objects[objKey].minigame;
 	var preEvalScript = "var M = Game.Objects['" + objKey + "'].minigame;"; //I think there was supposed to be an easier way utilizing the functions provided by CCSE, but I didn't understand so I just copy-pased the functions I was pretty sure would work. 
 
-	CCSE.ReplaceCodeIntoFunction('M.getSpellCost', 'if (spell.costPercent) out+=M.magicM*spell.costPercent;', 'if (spell.costPercent) out+=M.magic*spell.costPercent;', -1, preEvalScript);
-	// CCSE.ReplaceCodeIntoFunction('M.getSpellCostBreakdown', `+'% of max magic';`, `+'% of current magic';`, -1, preEvalScript);
+	CCSE.ReplaceCodeIntoFunction('M.getSpellCost', 'if (spell.costPercent) out+=M.magicM*spell.costPercent;', 'if (spell.costPercent) out+=M.magic*spell.costPercent;', 0, preEvalScript);
+	CCSE.ReplaceCodeIntoFunction('M.getSpellCostBreakdown', `+'% of max magic';`, `+'% of current magic';`, 0, preEvalScript);
 
 }
 
