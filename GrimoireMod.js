@@ -44,7 +44,7 @@ if(!GrimoireMod.isLoaded){
 	else {
 		if(!CCSE) var CCSE = {};
 		if(!CCSE.postLoadHooks) CCSE.postLoadHooks = [];
-		CCSE.postLoadHooks.push(MyMod.launch);
+		CCSE.postLoadHooks.push(GrimoireMod.launch);
 	}
 }
 
